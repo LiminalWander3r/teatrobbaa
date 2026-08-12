@@ -1,0 +1,274 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos base personalizados */
+@layer base {
+  body {
+    @apply bg-chicago-black text-white overflow-hidden h-screen;
+  }
+  .spotlight,.spotlight-effect {
+    background:
+      radial-gradient(
+        ellipse 60% 45% at 50% 38%,
+        rgba(212, 175, 55, 0.16),
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 90% 70% at 50% 0%,
+        rgba(45, 45, 45, 0.9),
+        #0a0a0a 65%
+      );
+  }
+  
+
+  .frame {
+    position: relative;
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    box-shadow:
+      0 0 0 6px #0a0a0a,
+      0 0 0 7px rgba(212, 175, 55, 0.35),
+      0 25px 70px rgba(0, 0, 0, 0.7);
+  }
+
+  .bulb {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 9999px;
+    background: #d4af37;
+    box-shadow: 0 0 6px 2px rgba(212, 175, 55, 0.7);
+    animation: chase 1.6s infinite steps(1);
+  }
+  .bulb.off {
+    background: #5a4a1e;
+    box-shadow: none;
+    animation: chase-off 1.6s infinite steps(1);
+  }
+  @keyframes chase {
+    0%,
+    49% {
+      opacity: 1;
+    }
+    50%,
+    100% {
+      opacity: 0.25;
+    }
+  }
+  @keyframes chase-off {
+    0%,
+    49% {
+      opacity: 0.25;
+    }
+    50%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .sunburst {
+    background: repeating-conic-gradient(
+      from 0deg,
+      rgba(212, 175, 55, 0.1) 0deg 6deg,
+      transparent 6deg 12deg
+    );
+    border-radius: 9999px;
+  }
+
+  .title-outline {
+    color: #cc0000;
+    -webkit-text-stroke: 1.5px #d4af37;
+    text-shadow: 0 4px 18px rgba(204, 0, 0, 0.5);
+    letter-spacing: 0.04em;
+  }
+
+  .diamond {
+    width: 6px;
+    height: 6px;
+    background: #d4af37;
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  dialog::backdrop {
+    background: rgba(5, 4, 3, 0.82);
+  }
+  dialog {
+    border: none;
+    background: transparent;
+    padding: 0;
+    max-width: min(620px, 92vw);
+  }
+  .modal-enter {
+    animation: pop 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  @keyframes pop {
+    from {
+      opacity: 0;
+      transform: translateY(16px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  }
+  /* 1920s Chicago-style button */
+  .btn-chicago {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 32px;
+    background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+    border: 2px solid #d4af37;
+    color: #d4af37;
+    font-family: "Playfair Display", "Georgia", serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow:
+      0 0 20px rgba(212, 175, 55, 0.1),
+      inset 0 0 20px rgba(212, 175, 55, 0.05);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+  }
+
+  /* Gold inner glow effect */
+  .btn-chicago::before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+
+  /* Diagonal lines pattern for art deco feel */
+  .btn-chicago::after {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(212, 175, 55, 0.03) 4px,
+      rgba(212, 175, 55, 0.03) 5px
+    );
+    pointer-events: none;
+  }
+
+  .btn-chicago:hover {
+    background: linear-gradient(180deg, #2a1f0a 0%, #1a1005 100%);
+    border-color: #f0d060;
+    color: #f0d060;
+    transform: translateY(-2px);
+    box-shadow:
+      0 8px 32px rgba(212, 175, 55, 0.25),
+      inset 0 0 30px rgba(212, 175, 55, 0.1);
+  }
+
+  .btn-chicago:active {
+    transform: translateY(0px);
+    box-shadow:
+      0 4px 16px rgba(212, 175, 55, 0.15),
+      inset 0 0 30px rgba(212, 175, 55, 0.05);
+  }
+
+  .btn-chicago .btn-deco {
+    font-size: 10px;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+  }
+
+  .btn-chicago:hover .btn-deco {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+
+  .btn-chicago .btn-text {
+    position: relative;
+    padding: 2px 0;
+  }
+
+  /* Underline animation on hover */
+  .btn-chicago .btn-text::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: #d4af37;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  .btn-chicago:hover .btn-text::after {
+    width: 100%;
+  }
+
+  /* Variety of button styles */
+
+  /* Gold solid button */
+  .btn-chicago-solid {
+    background: linear-gradient(180deg, #d4af37 0%, #b8962e 100%);
+    color: #0a0a0a;
+    border-color: #c4a030;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow:
+      0 4px 20px rgba(212, 175, 55, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-chicago-solid:hover {
+    background: linear-gradient(180deg, #e8c840 0%, #c4a030 100%);
+    border-color: #d4af37;
+    box-shadow:
+      0 8px 32px rgba(212, 175, 55, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  /* Red accent button (Chicago flag style) */
+  .btn-chicago-red {
+    background: linear-gradient(180deg, #8b0000 0%, #5c0000 100%);
+    border-color: #cc0000;
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+  }
+
+  .btn-chicago-red:hover {
+    background: linear-gradient(180deg, #a00000 0%, #6a0000 100%);
+    border-color: #ff0000;
+    box-shadow: 0 8px 32px rgba(200, 0, 0, 0.3);
+  }
+
+  /* Small variant */
+  .btn-chicago-sm {
+    padding: 10px 24px;
+    font-size: 11px;
+    letter-spacing: 3px;
+  }
+
+  /* Large variant */
+  .btn-chicago-lg {
+    padding: 20px 48px;
+    font-size: 18px;
+    letter-spacing: 6px;
+  }
+
+  /* Disabled state */
+  .btn-chicago:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+}

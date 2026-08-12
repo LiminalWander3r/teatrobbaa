@@ -1,0 +1,1589 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Club de Teatro BBAA</title>
+
+    <!-- CSS compilado de Tailwind -->
+    <link rel="stylesheet" href="../dist/output.css" />
+
+    <!-- Estilos personalizados adicionales -->
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div class="flex flex-col h-screen w-screen">
+      <!-- Cabecera -->
+      <header
+        class="flex-shrink-0 bg-chicago-dark border-b-2 border-chicago-red z-20 relative overflow-hidden spotlight-effect"
+      >
+        <div
+          class="flex flex-wrap items-center justify-between gap-5 md:flex-nowrap md:items-stretch md:justify-between md:gap-0 bg-chicago-black px-5"
+        >
+          <!-- Logo: siempre en la fila superior -->
+          <h1
+            class="font-show text-3xl md:text-4xl w-16 h-16 font-black text-white tracking-wider py-2 mb-3 md:me-5 flex-shrink-0"
+          >
+            <img src="./assets/bbaa.png" alt="bbaa" />
+          </h1>
+
+          <!-- Hamburguesa/cerrar, solo móvil, siempre en la fila superior junto al logo -->
+          <button
+            id="menuToggle"
+            class="md:hidden flex items-center justify-center w-10 h-10 text-white focus:outline-none flex-shrink-0"
+            aria-label="Abrir menú"
+            aria-expanded="false"
+            aria-controls="mainNav"
+          >
+            <svg
+              id="iconOpen"
+              class="w-7 h-7"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+            <svg
+              id="iconClose"
+              class="w-7 h-7 hidden"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+
+          <!-- Nav: pestañas horizontales en desktop (inline, junto al logo). En móvil, baja a su propia línea completa, centrada, al activarse. -->
+          <nav
+            id="mainNav"
+            class="hidden md:flex md:items-stretch md:overflow-x-auto md:flex-1 w-full md:w-auto flex-col md:flex-row bg-chicago-black scrollbar-chicago items-center"
+          >
+            <button
+              class="tab-btn flex items-center gap-3 px-8 py-4 md:h-full border-b-3 md:border-b-3 border-chicago-red text-chicago-red font-semibold text-sm uppercase tracking-wider whitespace-nowrap flex-shrink-0 transition-all duration-300 hover:bg-chicago-dark focus:outline-none"
+              data-tab="inicio"
+            >
+              Portada
+            </button>
+            <button
+              class="tab-btn flex items-center gap-3 px-8 py-4 md:h-full border-b-3 border-transparent text-gray-400 font-medium text-sm uppercase tracking-wider whitespace-nowrap flex-shrink-0 transition-all duration-300 hover:bg-chicago-dark hover:text-chicago-red focus:outline-none"
+              data-tab="elenco"
+            >
+              Elenco
+            </button>
+            <button
+              class="tab-btn flex items-center gap-3 px-8 py-4 md:h-full border-b-3 border-transparent text-gray-400 font-medium text-sm uppercase tracking-wider whitespace-nowrap flex-shrink-0 transition-all duration-300 hover:bg-chicago-dark hover:text-chicago-red focus:outline-none"
+              data-tab="merch"
+            >
+              Merch
+            </button>
+            <button
+              class="tab-btn flex items-center gap-3 px-8 py-4 md:h-full border-b-3 border-transparent text-gray-400 font-medium text-sm uppercase tracking-wider whitespace-nowrap flex-shrink-0 transition-all duration-300 hover:bg-chicago-dark hover:text-chicago-red focus:outline-none"
+              data-tab="galeria"
+            >
+              Galería
+            </button>
+            <button
+              class="tab-btn flex items-center gap-3 px-8 py-4 md:h-full border-b-3 border-transparent text-gray-400 font-medium text-sm uppercase tracking-wider whitespace-nowrap flex-shrink-0 transition-all duration-300 hover:bg-chicago-dark hover:text-chicago-red focus:outline-none"
+              data-tab="contacto"
+            >
+              Contacto
+            </button>
+
+            <!-- Social, solo móvil, dentro del desplegable -->
+            <div class="flex md:hidden items-center gap-3 px-8 py-4">
+              <p class="font-show text-lg font-black text-white tracking-wider">
+                ¡Síguenos!
+              </p>
+              <a href="https://www.instagram.com/clubteatrobbaa/">
+                <img
+                  src="./assets/Instagram_icon.png"
+                  alt="Instagram"
+                  class="h-8 w-8"
+                />
+              </a>
+            </div>
+          </nav>
+
+          <!-- Social, solo desktop, fijo a la derecha -->
+          <div class="hidden md:flex items-center flex-shrink-0">
+            <p
+              class="pe-5 font-show text-xl font-black text-white tracking-wider"
+            >
+              ¡Síguenos!
+            </p>
+            <a href="https://www.instagram.com/clubteatrobbaa/">
+              <img
+                src="./assets/Instagram_icon.png"
+                alt="Instagram"
+                class="h-8 w-8"
+              />
+            </a>
+          </div>
+        </div>
+      </header>
+      <!-- Contenido -->
+      <main
+        class="flex-1 overflow-y-auto overflow-x-hidden p-8 bg-chicago-black scrollbar-chicago"
+      >
+        <!-- Panel Inicio -->
+        <div class="tab-panel animate-fade-in max-w-7xl mx-auto" id="inicio">
+          <h2
+            class="font-show text-3xl font-bold text-white mb-2 relative text-center chicago-line pb-4"
+          >
+            EL CRIMEN DEL AÑO
+          </h2>
+          <div class="flex justify-center py-2">
+            <img src="assets/Cartel.jpeg" alt="Cartel El crimen del año" />
+          </div>
+          <!-- Separador -->
+          <div class="flex items-center justify-center my-8 max-w-7xl mx-auto">
+            <div
+              class="h-px bg-gradient-to-r from-transparent via-chicago-red/40 to-transparent flex-1"
+            ></div>
+            <span class="px-4 text-chicago-gold text-xl">✦</span>
+            <div
+              class="h-px bg-gradient-to-r from-transparent via-chicago-red/40 to-transparent flex-1"
+            ></div>
+          </div>
+          <section
+            class="grid grid-cols-1 md:grid-cols-2 place-items-center my-6"
+          >
+            <div class="carousel rounded-box w-64 h-96">
+              <div class="carousel-item w-full">
+                <img
+                  src="assets/Carusel1.JPG"
+                  class="w-full"
+                  alt="Tailwind CSS Carousel component"
+                />
+              </div>
+              <div class="carousel-item w-full">
+                <img
+                  src="assets/carousel.jpg"
+                  class="w-full"
+                  alt="Tailwind CSS Carousel component"
+                />
+              </div>
+              <div class="carousel-item w-full">
+                <img
+                  src="assets/Carusel4.JPG"
+                  class="w-full"
+                  alt="Tailwind CSS Carousel component"
+                />
+              </div>
+            </div>
+            <div class="text-center">
+              <h1
+                class="font-show text-4xl font-black text-white tracking-wider mb-4"
+              >
+                Conoce a nuestro <span class="text-chicago-gold">elenco</span>
+              </h1>
+
+              <p class="text-chicago-white/70 max-w-md mx-auto mb-6">
+                Desde la dirección hasta el guión técnico, pasando por el
+                vestuario, la coreografía y la fabricación del atrezzo, nuestros
+                estudiantes de diversas especialidades trabajan codo con codo
+                para dar el salto al escenario en una ambiciosa representación
+                amateur.
+              </p>
+
+              <button
+                class="inline-flex items-center gap-3 px-8 py-3 bg-gradient-to-r from-chicago-gold to-yellow-600 text-chicago-black font-show font-bold text-sm uppercase tracking-wider rounded hover:shadow-lg hover:shadow-chicago-gold/50 hover:-translate-y-0.5 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-chicago-red focus:ring-offset-2 focus:ring-offset-chicago-black"
+                id="botonElenco"
+              >
+                <span>⭐</span>
+                Ver todo el elenco
+              </button>
+            </div>
+          </section>
+          <!-- Separador -->
+          <div class="flex items-center justify-center my-8 max-w-7xl mx-auto">
+            <div
+              class="h-px bg-gradient-to-r from-transparent via-chicago-red/40 to-transparent flex-1"
+            ></div>
+            <span class="px-4 text-chicago-gold text-xl">✦</span>
+            <div
+              class="h-px bg-gradient-to-r from-transparent via-chicago-red/40 to-transparent flex-1"
+            ></div>
+          </div>
+          <section>
+            <div class="grid grid-cols-1 md:grid-cols-2 m-6">
+              <div class="flex flex-col items-center justify-center p-6 order-2 md:order-1">
+                <h2 class="font-show text-3xl font-bold text-white mb-4">
+                  Buenas tardes,
+                  <span class="text-chicago-gold">Chicago</span>
+                </h2>
+                <p class="text-chicago-white/70 leading-relaxed p-6 px-10">
+                  Decora tus accesorios y apoya a nuestra compañía comprando
+                  pegatinas y chapas con tus personajes y escenas favoritos del
+                  Crimen del Año. Todos los diseños están hechos por estudiantes
+                  de la Facultad de Bellas Artes de la Universidad de Sevilla.
+                </p>
+                <button
+                  class="inline-flex items-center gap-3 px-8 py-3 bg-gradient-to-r from-chicago-gold to-yellow-600 text-chicago-black font-show font-bold text-sm uppercase tracking-wider rounded hover:shadow-lg hover:shadow-chicago-gold/50 hover:-translate-y-0.5 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-chicago-red focus:ring-offset-2 focus:ring-offset-chicago-black"
+                  id="botonMerch"
+                >
+                  <span>⭐</span>
+                  Quiero verlos todos
+                </button>
+              </div>
+              <div
+                class="grid grid-cols-[180px_180px] gap-4 place-items-center justify-center order-1 md:order-2"
+              >
+                <!-- Card 1 -->
+                <div
+                  class="relative bg-chicago-dark rounded-md px-6 pt-6 pb-4 overflow-hidden border border-chicago-gold/30 shadow-lg shadow-chicago-gold/5 hover:shadow-xl hover:shadow-chicago-gold/20 transition-all duration-300 hover:-translate-y-1"
+                  style="width: 180px"
+                >
+                  <div
+                    class="sunburst absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-48 opacity-50"
+                  ></div>
+                  <div
+                    class="relative rounded-full overflow-hidden mx-auto w-24 h-24 ring-2 ring-chicago-gold/70"
+                    style="background: #2d2d2d"
+                  >
+                    <img
+                      src="./assets/merch/Elisa.png"
+                      alt="Roxie"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h1
+                    class="font-marquee text-xl text-center mt-3 uppercase text-chicago-gold"
+                  >
+                    Roxie
+                  </h1>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                  class="relative bg-chicago-dark rounded-md px-6 pt-6 pb-4 overflow-hidden border border-chicago-gold/30 shadow-lg shadow-chicago-gold/5 hover:shadow-xl hover:shadow-chicago-gold/20 transition-all duration-300 hover:-translate-y-1"
+                  style="width: 180px"
+                >
+                  <div
+                    class="sunburst absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-48 opacity-50"
+                  ></div>
+                  <div
+                    class="relative rounded-full overflow-hidden mx-auto w-24 h-24 ring-2 ring-chicago-gold/70"
+                    style="background: #2d2d2d"
+                  >
+                    <img
+                      src="./assets/merch/Pablo.png"
+                      alt="Billy"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h1
+                    class="font-marquee text-xl text-center mt-3 uppercase text-chicago-gold"
+                  >
+                    Billy
+                  </h1>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                  class="relative bg-chicago-dark rounded-md px-6 pt-6 pb-4 overflow-hidden border border-chicago-gold/30 shadow-lg shadow-chicago-gold/5 hover:shadow-xl hover:shadow-chicago-gold/20 transition-all duration-300 hover:-translate-y-1"
+                  style="width: 180px"
+                >
+                  <div
+                    class="sunburst absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-48 opacity-50"
+                  ></div>
+                  <div
+                    class="relative rounded-full overflow-hidden mx-auto w-24 h-24 ring-2 ring-chicago-gold/70"
+                    style="background: #2d2d2d"
+                  >
+                    <img
+                      src="./assets/merch/nico.png"
+                      alt="Velma"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h1
+                    class="font-marquee text-xl text-center mt-3 uppercase text-chicago-gold"
+                  >
+                    Velma
+                  </h1>
+                </div>
+
+                <!-- Card 4 -->
+                <div
+                  class="relative bg-chicago-dark rounded-md px-6 pt-6 pb-4 overflow-hidden border border-chicago-gold/30 shadow-lg shadow-chicago-gold/5 hover:shadow-xl hover:shadow-chicago-gold/20 transition-all duration-300 hover:-translate-y-1"
+                  style="width: 180px"
+                >
+                  <div
+                    class="sunburst absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-48 opacity-50"
+                  ></div>
+                  <div
+                    class="relative rounded-full overflow-hidden mx-auto w-24 h-24 ring-2 ring-chicago-gold/70"
+                    style="background: #2d2d2d"
+                  >
+                    <img
+                      src="./assets/merch/tango.png"
+                      alt="Tango"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h1
+                    class="font-marquee text-xl text-center mt-3 uppercase text-chicago-gold"
+                  >
+                    Tango
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Separador -->
+          <div class="flex items-center justify-center max-w-7xl mx-auto py-5">
+            <div
+              class="h-px bg-gradient-to-r from-transparent via-chicago-red/40 to-transparent flex-1"
+            ></div>
+            <span class="px-4 text-chicago-gold text-xl">✦</span>
+            <div
+              class="h-px bg-gradient-to-r from-transparent via-chicago-red/40 to-transparent flex-1"
+            ></div>
+          </div>
+
+          <section class="flex items-center justify-center">
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto px-4 justify-items-center"
+            >
+              <!-- Image Column -->
+              <div class="flex justify-center items-center w-full mt-3">
+                <div class="relative w-96 h-96">
+                  <div
+                    class="bg-chicago-dark rounded-lg p-1 border border-chicago-gold/20 shadow-2xl"
+                  >
+                    <div
+                      class="bg-chicago-black rounded-md p-4 text-center relative overflow-hidden"
+                    >
+                      <div class="relative z-10">
+                        <img
+                          src="./assets/FranDrag.jpg"
+                          alt="Fran Drag"
+                          class="w-full h-auto"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Text Column -->
+              <div
+                class="flex flex-col items-center justify-center text-center p-6 w-full"
+              >
+                <div class="relative inline-block mb-6">
+                  <h1
+                    class="font-show text-3xl md:text-4xl font-bold text-white leading-tight"
+                  >
+                    Una compañía universitaria y
+                    <span class="text-chicago-gold block"> reivindicativa</span>
+                  </h1>
+                  <div
+                    class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-1 bg-chicago-red/60"
+                  ></div>
+                </div>
+                <p
+                  class="text-chicago-white/70 max-w-md mx-auto leading-relaxed text-lg"
+                >
+                  Somos un grupo de estudiantes con múltiples miembros de la
+                  comunidad LGTB+ y estamos comprometidos con la defensa de sus
+                  derechos. Nuestro mayor estreno fue en el Teatro del Hogar
+                  Virgen de los Reyes como parte de las actividades culturales
+                  del Mes del Orgullo de Sevilla 2026 🏳️‍🌈🏳️‍⚧️. Destaca la actuación
+                  en drag de Fran Torres como Lucy Moonlight y una periodista,
+                  antes de su impresionante cambio de vestuario para representar
+                  al juez en el segundo acto.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Separador final -->
+          <div class="flex items-center justify-center my-8 max-w-7xl mx-auto">
+            <div
+              class="h-px bg-gradient-to-r from-transparent via-chicago-red/40 to-transparent flex-1"
+            ></div>
+            <span class="px-4 text-chicago-gold text-xl">✦</span>
+            <div
+              class="h-px bg-gradient-to-r from-transparent via-chicago-red/40 to-transparent flex-1"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Panel Perfil (oculto) -->
+        <div class="tab-panel hidden animate-fade-in mx-auto" id="elenco">
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-y-6 place-items-center"
+          >
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/elisa.png"
+              alt="Elisa"
+            />
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/pablo.png"
+              alt="Pablo"
+            />
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/nico.png"
+              alt="Nico"
+            />
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/Ángela.jpg"
+              alt="Ángela"
+            />
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/mbappe.jpg"
+              alt="Rodri"
+            />
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/franciscojavier.jpg"
+              alt="Francisco Javier"
+            />
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/Alicia.png"
+              alt="Alicia"
+            />
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/Erika.jpg"
+              alt="Erika"
+            />
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/irenemayor.jpg"
+              alt="Irene Mayor"
+            />
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/Ruth.jpg"
+              alt="Ruth"
+            />
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/carlosbailarin.jpg"
+              alt="Carlos"
+            />
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/Frag.jpg"
+              alt="Fran"
+            />
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/irenebailarina.png"
+              alt="Irene"
+            />
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/Natalia.jpg"
+              alt="Natalia"
+            />
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/ray.png"
+              alt="Helena"
+            />
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/Maribel.jpg"
+              alt="Maribel"
+            />
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/mar.jpg"
+              alt="Mar"
+            />
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/CarlosRoxie.jpg"
+              alt="Carlos"
+            />
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/maribanda.jpg"
+              alt="María"
+            />
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/natensemble.jpg"
+              alt="Natalia"
+            />
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/AlePoli.jpg"
+              alt="Alejandro"
+            />
+            <img
+              class="w-[300px] h-[500px]"
+              src="assets/elenco/MiguelPoli.jpg"
+              alt="Miguel"
+            />
+            <div class="md:col-span-2">
+              <h2>Equipo artístico y técnico</h2>
+              <ul>
+                <li><b> Elisa Valdés </b> Dirección y adaptación</li>
+                <li><b> David Rodríguez "Guspi" </b> Regiduría</li>
+                <li><b>José Manuel López Pérez </b> Regiduría</li>
+                <li><b>Marina Pacheco </b> Técnica de luces</li>
+                <li><b>Javier de Celis </b> Técnico de sonido</li>
+                <li><b>Marina Pacheco </b> Técnica de luces</li>
+                <li><b>Javier de Celis </b> Técnico de sonido</li>
+                <li><b>Natalia Medina </b> Coreografía</li>
+                <li><b>Natalia Medina </b> Coreografía</li>
+                <li><b>Amanda Cerpa </b> Coreografía</li>
+                <li><b>Nico Valencia</b> Diseño Gráfico</li>
+                <li><b>Miguel Trigueros </b> Desarrollo Web</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel Merch (oculto) -->
+        <div
+          class="tab-panel hidden animate-fade-in max-w-6xl mx-auto"
+          id="merch"
+        >
+          <section
+            class="spotlight min-h-screen grid md:grid-cols-2 gap-y-10 place-items-center justify-center px-6 py-4"
+          >
+            <div class="title-section md:col-span-2 text-center mb-2 relative">
+              <!-- overline -->
+              <p
+                class="font-playbill text-[1.2rem] tracking-[0.6em] uppercase text-[#d4af37]/70 mb-1"
+              >
+                Merchandising
+              </p>
+
+              <!-- main title with gold glow & outline -->
+              <h2
+                class="font-marquee text-5xl md:text-6xl uppercase text-[#d4af37] title-outline tracking-wide inline-block px-2 relative"
+              >
+                El crimen del año
+                <!-- small decorative line under text (inline-block) -->
+              </h2>
+
+              <!-- gold rule (tailwind + custom rule class) -->
+              <div class="rule w-24 mx-auto mt-1.5 opacity-60"></div>
+
+              <!-- diamond decoration row -->
+              <div class="flex justify-center gap-2 mt-2">
+                <span class="diamond"></span>
+                <span class="diamond"></span>
+                <span class="diamond"></span>
+                <span class="diamond"></span>
+                <span class="diamond"></span>
+              </div>
+            </div>
+            <main class="w-full max-w-sm relative">
+              <button
+                type="button"
+                data-modal="elisaMerch"
+                class="relative openBtn block w-full text-left group focus:outline-none focus-visible:ring-4 focus-visible:ring-chicago-gold/40 rounded-md"
+              >
+                <div
+                  class="frame relative bg-chicago-dark rounded-md px-8 pt-10 pb-8 overflow-hidden"
+                >
+                  <div
+                    class="sunburst absolute -top-16 left-1/2 -translate-x-1/2 w-72 h-72"
+                  ></div>
+
+                  <div
+                    class="relative rounded-full overflow-hidden mx-auto w-40 h-40 ring-2 ring-chicago-gold"
+                    style="background: #2d2d2d"
+                  >
+                    <img
+                      src="./assets/merch/Elisa.png"
+                      alt="Elisa"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  <h1
+                    class="font-marquee title-outline text-5xl text-center mt-6 uppercase"
+                  >
+                    Roxie
+                  </h1>
+
+                  <div class="rule mt-6 mb-3"></div>
+
+                  <p
+                    class="text-center text-xs tracking-[0.3em] uppercase text-chicago-gold group-hover:text-chicago-red-light transition-colors"
+                  >
+                    Ver precio
+                  </p>
+                </div>
+              </button>
+            </main>
+
+            <!-- details dialog -->
+            <dialog class="detailsModal" id="elisaMerch">
+              <div
+                class="modal-enter relative rounded-md overflow-hidden bg-chicago-dark"
+                style="
+                  box-shadow:
+                    0 0 0 1px rgba(212, 175, 55, 0.5),
+                    0 0 0 7px #0a0a0a,
+                    0 0 0 8px rgba(212, 175, 55, 0.3),
+                    0 25px 70px rgba(0, 0, 0, 0.8);
+                "
+              >
+                <button
+                  type="button"
+                  aria-label="Close"
+                  class="absolute closeBtn top-4 right-4 w-8 h-8 rounded-full bg-chicago-white/10 hover:bg-chicago-red text-chicago-white flex items-center justify-center text-lg leading-none z-10 transition-colors"
+                >
+                  ×
+                </button>
+
+                <div class="p-8 sm:p-10">
+                  <p
+                    class="font-marquee text-chicago-gold text-xs tracking-[0.5em] uppercase text-center mb-2"
+                  >
+                    Insignias
+                  </p>
+                  <div class="rule mb-6"></div>
+
+                  <div
+                    class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start"
+                  >
+                    <div
+                      class="rounded-full overflow-hidden w-64 h-64 mx-auto sm:mx-0 ring-2 ring-chicago-gold shrink-0"
+                      style="background: #2d2d2d"
+                    >
+                      <img
+                        src="./assets/merch/Elisa.png"
+                        alt="Elisa, close up"
+                        class="w-full h-full object-cover"
+                      />
+                    </div>
+
+                    <div>
+                      <h2 class="font-marquee title-outline text-3xl uppercase">
+                        Roxie
+                      </h2>
+                      <p
+                        class="font-playbill italic text-chicago-red-light text-sm mt-1"
+                      >
+                        Featured Player
+                      </p>
+
+                      <p
+                        class="text-sm text-chicago-white/70 mt-4 leading-relaxed"
+                      >
+                        Una insinia circular con tu personaje favorito del
+                        crimen del año
+                      </p>
+
+                      <ul class="mt-5 space-y-2.5 pb-5">
+                        <li
+                          class="flex items-center gap-3 text-sm text-chicago-white/80"
+                        >
+                          <span class="diamond"></span>Pegatinas 1€
+                        </li>
+                        <li
+                          class="flex items-center gap-3 text-sm text-chicago-white/80"
+                        >
+                          <span class="diamond"></span>Chapas 2€
+                        </li>
+                      </ul>
+                      <button class="btn-chicago py-5 botonContactos">
+                        <span class="btn-deco">✦</span>
+                        <span class="btn-text">Contáctanos</span>
+                        <span class="btn-deco">✦</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="rule mt-8"></div>
+                </div>
+              </div>
+            </dialog>
+
+            <main class="w-full max-w-sm relative">
+              <button
+                type="button"
+                data-modal="nicoMerch"
+                class="relative openBtn block w-full text-left group focus:outline-none focus-visible:ring-4 focus-visible:ring-chicago-gold/40 rounded-md"
+              >
+                <div
+                  class="frame relative bg-chicago-dark rounded-md px-8 pt-10 pb-8 overflow-hidden"
+                >
+                  <div
+                    class="sunburst absolute -top-16 left-1/2 -translate-x-1/2 w-72 h-72"
+                  ></div>
+
+                  <div
+                    class="relative rounded-full overflow-hidden mx-auto w-40 h-40 ring-2 ring-chicago-gold"
+                    style="background: #2d2d2d"
+                  >
+                    <img
+                      src="./assets/merch/Nico.png"
+                      alt="Elisa"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  <h1
+                    class="font-marquee title-outline text-5xl text-center mt-6 uppercase"
+                  >
+                    Velma
+                  </h1>
+
+                  <div class="rule mt-6 mb-3"></div>
+
+                  <p
+                    class="text-center text-xs tracking-[0.3em] uppercase text-chicago-gold group-hover:text-chicago-red-light transition-colors"
+                  >
+                    Ver precio
+                  </p>
+                </div>
+              </button>
+            </main>
+
+            <!-- details dialog -->
+            <dialog id="nicoMerch" class="detailsModal">
+              <div
+                class="modal-enter relative rounded-md overflow-hidden bg-chicago-dark"
+                style="
+                  box-shadow:
+                    0 0 0 1px rgba(212, 175, 55, 0.5),
+                    0 0 0 7px #0a0a0a,
+                    0 0 0 8px rgba(212, 175, 55, 0.3),
+                    0 25px 70px rgba(0, 0, 0, 0.8);
+                "
+              >
+                <button
+                  type="button"
+                  aria-label="Close"
+                  class="absolute closeBtn top-4 right-4 w-8 h-8 rounded-full bg-chicago-white/10 hover:bg-chicago-red text-chicago-white flex items-center justify-center text-lg leading-none z-10 transition-colors"
+                >
+                  ×
+                </button>
+
+                <div class="p-8 sm:p-10">
+                  <p
+                    class="font-marquee text-chicago-gold text-xs tracking-[0.5em] uppercase text-center mb-2"
+                  >
+                    Insignias
+                  </p>
+                  <div class="rule mb-6"></div>
+
+                  <div
+                    class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start"
+                  >
+                    <div
+                      class="rounded-full overflow-hidden w-64 h-64 mx-auto sm:mx-0 ring-2 ring-chicago-gold shrink-0"
+                      style="background: #2d2d2d"
+                    >
+                      <img
+                        src="./assets/merch/Nico.png"
+                        alt="Elisa, close up"
+                        class="w-full h-full object-cover"
+                      />
+                    </div>
+
+                    <div>
+                      <h2 class="font-marquee title-outline text-3xl uppercase">
+                        Velma
+                      </h2>
+                      <p
+                        class="font-playbill italic text-chicago-red-light text-sm mt-1"
+                      >
+                        Featured Player
+                      </p>
+
+                      <p
+                        class="text-sm text-chicago-white/70 mt-4 leading-relaxed"
+                      >
+                        Una insinia circular con tu personaje favorito del
+                        crimen del año
+                      </p>
+
+                      <ul class="mt-5 space-y-2.5 pb-5">
+                        <li
+                          class="flex items-center gap-3 text-sm text-chicago-white/80"
+                        >
+                          <span class="diamond"></span>Pegatinas 1€
+                        </li>
+                        <li
+                          class="flex items-center gap-3 text-sm text-chicago-white/80"
+                        >
+                          <span class="diamond"></span>Chapas 2€
+                        </li>
+                      </ul>
+                      <button class="btn-chicago py-5 botonContactos">
+                        <span class="btn-deco">✦</span>
+                        <span class="btn-text">Contáctanos</span>
+                        <span class="btn-deco">✦</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="rule mt-8"></div>
+                </div>
+              </div>
+            </dialog>
+            <main class="w-full max-w-sm relative">
+              <button
+                type="button"
+                data-modal="pabloMerch"
+                class="relative openBtn block w-full text-left group focus:outline-none focus-visible:ring-4 focus-visible:ring-chicago-gold/40 rounded-md"
+              >
+                <div
+                  class="frame relative bg-chicago-dark rounded-md px-8 pt-10 pb-8 overflow-hidden"
+                >
+                  <div
+                    class="sunburst absolute -top-16 left-1/2 -translate-x-1/2 w-72 h-72"
+                  ></div>
+
+                  <div
+                    class="relative rounded-full overflow-hidden mx-auto w-40 h-40 ring-2 ring-chicago-gold"
+                    style="background: #2d2d2d"
+                  >
+                    <img
+                      src="./assets/merch/Pablo.png"
+                      alt="Pablo"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  <h1
+                    class="font-marquee title-outline text-5xl text-center mt-6 uppercase"
+                  >
+                    Billy
+                  </h1>
+
+                  <div class="rule mt-6 mb-3"></div>
+
+                  <p
+                    class="text-center text-xs tracking-[0.3em] uppercase text-chicago-gold group-hover:text-chicago-red-light transition-colors"
+                  >
+                    Ver precio
+                  </p>
+                </div>
+              </button>
+            </main>
+
+            <!-- details dialog -->
+            <dialog class="detailsModal" id="pabloMerch">
+              <div
+                class="modal-enter relative rounded-md overflow-hidden bg-chicago-dark"
+                style="
+                  box-shadow:
+                    0 0 0 1px rgba(212, 175, 55, 0.5),
+                    0 0 0 7px #0a0a0a,
+                    0 0 0 8px rgba(212, 175, 55, 0.3),
+                    0 25px 70px rgba(0, 0, 0, 0.8);
+                "
+              >
+                <button
+                  type="button"
+                  aria-label="Close"
+                  class="absolute closeBtn top-4 right-4 w-8 h-8 rounded-full bg-chicago-white/10 hover:bg-chicago-red text-chicago-white flex items-center justify-center text-lg leading-none z-10 transition-colors"
+                >
+                  ×
+                </button>
+
+                <div class="p-8 sm:p-10">
+                  <p
+                    class="font-marquee text-chicago-gold text-xs tracking-[0.5em] uppercase text-center mb-2"
+                  >
+                    Insignias
+                  </p>
+                  <div class="rule mb-6"></div>
+
+                  <div
+                    class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start"
+                  >
+                    <div
+                      class="rounded-full overflow-hidden w-64 h-64 mx-auto sm:mx-0 ring-2 ring-chicago-gold shrink-0"
+                      style="background: #2d2d2d"
+                    >
+                      <img
+                        src="./assets/merch/Pablo.png"
+                        alt="Pablo, close up"
+                        class="w-full h-full object-cover"
+                      />
+                    </div>
+
+                    <div>
+                      <h2 class="font-marquee title-outline text-3xl uppercase">
+                        Billy
+                      </h2>
+                      <p
+                        class="font-playbill italic text-chicago-red-light text-sm mt-1"
+                      >
+                        Featured Player
+                      </p>
+
+                      <p
+                        class="text-sm text-chicago-white/70 mt-4 leading-relaxed"
+                      >
+                        Una insinia circular con tu personaje favorito del
+                        crimen del año
+                      </p>
+
+                      <ul class="mt-5 space-y-2.5 pb-5">
+                        <li
+                          class="flex items-center gap-3 text-sm text-chicago-white/80"
+                        >
+                          <span class="diamond"></span>Pegatinas 1€
+                        </li>
+                        <li
+                          class="flex items-center gap-3 text-sm text-chicago-white/80"
+                        >
+                          <span class="diamond"></span>Chapas 2€
+                        </li>
+                      </ul>
+                      <button class="btn-chicago py-5 botonContactos">
+                        <span class="btn-deco">✦</span>
+                        <span class="btn-text">Contáctanos</span>
+                        <span class="btn-deco">✦</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="rule mt-8"></div>
+                </div>
+              </div>
+            </dialog>
+            <main class="w-full max-w-sm relative">
+              <button
+                type="button"
+                data-modal="mamaMerch"
+                class="relative openBtn block w-full text-left group focus:outline-none focus-visible:ring-4 focus-visible:ring-chicago-gold/40 rounded-md"
+              >
+                <div
+                  class="frame relative bg-chicago-dark rounded-md px-8 pt-10 pb-8 overflow-hidden"
+                >
+                  <div
+                    class="sunburst absolute -top-16 left-1/2 -translate-x-1/2 w-72 h-72"
+                  ></div>
+
+                  <div
+                    class="relative rounded-full overflow-hidden mx-auto w-40 h-40 ring-2 ring-chicago-gold"
+                    style="background: #2d2d2d"
+                  >
+                    <img
+                      src="./assets/merch/angela.png"
+                      alt="Mama"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  <h1
+                    class="font-marquee title-outline text-5xl text-center mt-6 uppercase"
+                  >
+                    Mama
+                  </h1>
+
+                  <div class="rule mt-6 mb-3"></div>
+
+                  <p
+                    class="text-center text-xs tracking-[0.3em] uppercase text-chicago-gold group-hover:text-chicago-red-light transition-colors"
+                  >
+                    Ver precio
+                  </p>
+                </div>
+              </button>
+            </main>
+
+            <!-- details dialog -->
+            <dialog class="detailsModal" id="mamaMerch">
+              <div
+                class="modal-enter relative rounded-md overflow-hidden bg-chicago-dark"
+                style="
+                  box-shadow:
+                    0 0 0 1px rgba(212, 175, 55, 0.5),
+                    0 0 0 7px #0a0a0a,
+                    0 0 0 8px rgba(212, 175, 55, 0.3),
+                    0 25px 70px rgba(0, 0, 0, 0.8);
+                "
+              >
+                <button
+                  type="button"
+                  aria-label="Close"
+                  class="absolute closeBtn top-4 right-4 w-8 h-8 rounded-full bg-chicago-white/10 hover:bg-chicago-red text-chicago-white flex items-center justify-center text-lg leading-none z-10 transition-colors"
+                >
+                  ×
+                </button>
+
+                <div class="p-8 sm:p-10">
+                  <p
+                    class="font-marquee text-chicago-gold text-xs tracking-[0.5em] uppercase text-center mb-2"
+                  >
+                    Insignias
+                  </p>
+                  <div class="rule mb-6"></div>
+
+                  <div
+                    class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start"
+                  >
+                    <div
+                      class="rounded-full overflow-hidden w-64 h-64 mx-auto sm:mx-0 ring-2 ring-chicago-gold shrink-0"
+                      style="background: #2d2d2d"
+                    >
+                      <img
+                        src="./assets/merch/angela.png"
+                        alt="Mama, close up"
+                        class="w-full h-full object-cover"
+                      />
+                    </div>
+
+                    <div>
+                      <h2 class="font-marquee title-outline text-3xl uppercase">
+                        Mama
+                      </h2>
+                      <p
+                        class="font-playbill italic text-chicago-red-light text-sm mt-1"
+                      >
+                        Featured Player
+                      </p>
+
+                      <p
+                        class="text-sm text-chicago-white/70 mt-4 leading-relaxed"
+                      >
+                        Una insinia circular con tu personaje favorito del
+                        crimen del año
+                      </p>
+
+                      <ul class="mt-5 space-y-2.5 pb-5">
+                        <li
+                          class="flex items-center gap-3 text-sm text-chicago-white/80"
+                        >
+                          <span class="diamond"></span>Pegatinas 1€
+                        </li>
+                        <li
+                          class="flex items-center gap-3 text-sm text-chicago-white/80"
+                        >
+                          <span class="diamond"></span>Chapas 2€
+                        </li>
+                      </ul>
+                      <button class="btn-chicago py-5 botonContactos">
+                        <span class="btn-deco">✦</span>
+                        <span class="btn-text">Contáctanos</span>
+                        <span class="btn-deco">✦</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="rule mt-8"></div>
+                </div>
+              </div>
+            </dialog>
+            <main class="w-full max-w-sm relative">
+              <button
+                type="button"
+                data-modal="amosMerch"
+                class="relative openBtn block w-full text-left group focus:outline-none focus-visible:ring-4 focus-visible:ring-chicago-gold/40 rounded-md"
+              >
+                <div
+                  class="frame relative bg-chicago-dark rounded-md px-8 pt-10 pb-8 overflow-hidden"
+                >
+                  <div
+                    class="sunburst absolute -top-16 left-1/2 -translate-x-1/2 w-72 h-72"
+                  ></div>
+
+                  <div
+                    class="relative rounded-full overflow-hidden mx-auto w-40 h-40 ring-2 ring-chicago-gold"
+                    style="background: #2d2d2d"
+                  >
+                    <img
+                      src="./assets/merch/celofan.png"
+                      alt="Amos"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  <h1
+                    class="font-marquee title-outline text-5xl text-center mt-6 uppercase"
+                  >
+                    Amos
+                  </h1>
+
+                  <div class="rule mt-6 mb-3"></div>
+
+                  <p
+                    class="text-center text-xs tracking-[0.3em] uppercase text-chicago-gold group-hover:text-chicago-red-light transition-colors"
+                  >
+                    Ver precio
+                  </p>
+                </div>
+              </button>
+            </main>
+
+            <!-- details dialog -->
+            <dialog class="detailsModal" id="amosMerch">
+              <div
+                class="modal-enter relative rounded-md overflow-hidden bg-chicago-dark"
+                style="
+                  box-shadow:
+                    0 0 0 1px rgba(212, 175, 55, 0.5),
+                    0 0 0 7px #0a0a0a,
+                    0 0 0 8px rgba(212, 175, 55, 0.3),
+                    0 25px 70px rgba(0, 0, 0, 0.8);
+                "
+              >
+                <button
+                  type="button"
+                  aria-label="Close"
+                  class="absolute closeBtn top-4 right-4 w-8 h-8 rounded-full bg-chicago-white/10 hover:bg-chicago-red text-chicago-white flex items-center justify-center text-lg leading-none z-10 transition-colors"
+                >
+                  ×
+                </button>
+
+                <div class="p-8 sm:p-10">
+                  <p
+                    class="font-marquee text-chicago-gold text-xs tracking-[0.5em] uppercase text-center mb-2"
+                  >
+                    Insignias
+                  </p>
+                  <div class="rule mb-6"></div>
+
+                  <div
+                    class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start"
+                  >
+                    <div
+                      class="rounded-full overflow-hidden w-64 h-64 mx-auto sm:mx-0 ring-2 ring-chicago-gold shrink-0"
+                      style="background: #2d2d2d"
+                    >
+                      <img
+                        src="./assets/merch/celofan.png"
+                        alt="Amos, close up"
+                        class="w-full h-full object-cover"
+                      />
+                    </div>
+
+                    <div>
+                      <h2 class="font-marquee title-outline text-3xl uppercase">
+                        Amos
+                      </h2>
+                      <p
+                        class="font-playbill italic text-chicago-red-light text-sm mt-1"
+                      >
+                        Featured Player
+                      </p>
+
+                      <p
+                        class="text-sm text-chicago-white/70 mt-4 leading-relaxed"
+                      >
+                        Una insinia circular con tu personaje favorito del
+                        crimen del año
+                      </p>
+
+                      <ul class="mt-5 space-y-2.5 pb-5">
+                        <li
+                          class="flex items-center gap-3 text-sm text-chicago-white/80"
+                        >
+                          <span class="diamond"></span>Pegatinas 1€
+                        </li>
+                        <li
+                          class="flex items-center gap-3 text-sm text-chicago-white/80"
+                        >
+                          <span class="diamond"></span>Chapas 2€
+                        </li>
+                      </ul>
+                      <button class="btn-chicago py-5 botonContactos">
+                        <span class="btn-deco">✦</span>
+                        <span class="btn-text">Contáctanos</span>
+                        <span class="btn-deco">✦</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="rule mt-8"></div>
+                </div>
+              </div>
+            </dialog>
+            <main class="w-full max-w-sm relative">
+              <button
+                type="button"
+                data-modal="tangoMerch"
+                class="relative openBtn block w-full text-left group focus:outline-none focus-visible:ring-4 focus-visible:ring-chicago-gold/40 rounded-md"
+              >
+                <div
+                  class="frame relative bg-chicago-dark rounded-md px-8 pt-10 pb-8 overflow-hidden"
+                >
+                  <div
+                    class="sunburst absolute -top-16 left-1/2 -translate-x-1/2 w-72 h-72"
+                  ></div>
+
+                  <div
+                    class="relative rounded-full overflow-hidden mx-auto w-40 h-40 ring-2 ring-chicago-gold"
+                    style="background: #2d2d2d"
+                  >
+                    <img
+                      src="./assets/merch/tango.png"
+                      alt="tango"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  <h1
+                    class="font-marquee title-outline text-5xl text-center mt-6 uppercase"
+                  >
+                    Tango
+                  </h1>
+
+                  <div class="rule mt-6 mb-3"></div>
+
+                  <p
+                    class="text-center text-xs tracking-[0.3em] uppercase text-chicago-gold group-hover:text-chicago-red-light transition-colors"
+                  >
+                    Ver precio
+                  </p>
+                </div>
+              </button>
+            </main>
+
+            <!-- details dialog -->
+            <dialog class="detailsModal" id="tangoMerch">
+              <div
+                class="modal-enter relative rounded-md overflow-hidden bg-chicago-dark"
+                style="
+                  box-shadow:
+                    0 0 0 1px rgba(212, 175, 55, 0.5),
+                    0 0 0 7px #0a0a0a,
+                    0 0 0 8px rgba(212, 175, 55, 0.3),
+                    0 25px 70px rgba(0, 0, 0, 0.8);
+                "
+              >
+                <button
+                  type="button"
+                  aria-label="Close"
+                  class="absolute closeBtn top-4 right-4 w-8 h-8 rounded-full bg-chicago-white/10 hover:bg-chicago-red text-chicago-white flex items-center justify-center text-lg leading-none z-10 transition-colors"
+                >
+                  ×
+                </button>
+
+                <div class="p-8 sm:p-10">
+                  <p
+                    class="font-marquee text-chicago-gold text-xs tracking-[0.5em] uppercase text-center mb-2"
+                  >
+                    Insignias
+                  </p>
+                  <div class="rule mb-6"></div>
+
+                  <div
+                    class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start"
+                  >
+                    <div
+                      class="rounded-full overflow-hidden w-64 h-64 mx-auto sm:mx-0 ring-2 ring-chicago-gold shrink-0"
+                      style="background: #2d2d2d"
+                    >
+                      <img
+                        src="./assets/merch/tango.png"
+                        alt="Chicago, close up"
+                        class="w-full h-full object-cover"
+                      />
+                    </div>
+
+                    <div>
+                      <h2 class="font-marquee title-outline text-3xl uppercase">
+                        Tango
+                      </h2>
+                      <p
+                        class="font-playbill italic text-chicago-red-light text-sm mt-1"
+                      >
+                        Featured Player
+                      </p>
+
+                      <p
+                        class="text-sm text-chicago-white/70 mt-4 leading-relaxed"
+                      >
+                        Una insinia circular con tu personaje favorito del
+                        crimen del año
+                      </p>
+
+                      <ul class="mt-5 space-y-2.5 pb-5">
+                        <li
+                          class="flex items-center gap-3 text-sm text-chicago-white/80"
+                        >
+                          <span class="diamond"></span>Pegatinas 1€
+                        </li>
+                        <li
+                          class="flex items-center gap-3 text-sm text-chicago-white/80"
+                        >
+                          <span class="diamond"></span>Chapas 2€
+                        </li>
+                      </ul>
+                      <button class="btn-chicago py-5 botonContactos">
+                        <span class="btn-deco">✦</span>
+                        <span class="btn-text">Contáctanos</span>
+                        <span class="btn-deco">✦</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="rule mt-8"></div>
+                </div>
+              </div>
+            </dialog>
+            <main class="w-full max-w-sm relative">
+              <button
+                type="button"
+                data-modal="chicagoMerch"
+                class="relative openBtn block w-full text-left group focus:outline-none focus-visible:ring-4 focus-visible:ring-chicago-gold/40 rounded-md"
+              >
+                <div
+                  class="frame relative bg-chicago-dark rounded-md px-8 pt-10 pb-8 overflow-hidden"
+                >
+                  <div
+                    class="sunburst absolute -top-16 left-1/2 -translate-x-1/2 w-72 h-72"
+                  ></div>
+
+                  <div
+                    class="relative rounded-full overflow-hidden mx-auto w-40 h-40 ring-2 ring-chicago-gold"
+                    style="background: #2d2d2d"
+                  >
+                    <img
+                      src="./assets/merch/letrac.png"
+                      alt="Chicago"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  <h1
+                    class="font-marquee title-outline text-5xl text-center mt-6 uppercase"
+                  >
+                    Chicago
+                  </h1>
+
+                  <div class="rule mt-6 mb-3"></div>
+
+                  <p
+                    class="text-center text-xs tracking-[0.3em] uppercase text-chicago-gold group-hover:text-chicago-red-light transition-colors"
+                  >
+                    Ver precio
+                  </p>
+                </div>
+              </button>
+            </main>
+
+            <!-- details dialog -->
+            <dialog class="detailsModal" id="chicagoMerch">
+              <div
+                class="modal-enter relative rounded-md overflow-hidden bg-chicago-dark"
+                style="
+                  box-shadow:
+                    0 0 0 1px rgba(212, 175, 55, 0.5),
+                    0 0 0 7px #0a0a0a,
+                    0 0 0 8px rgba(212, 175, 55, 0.3),
+                    0 25px 70px rgba(0, 0, 0, 0.8);
+                "
+              >
+                <button
+                  type="button"
+                  aria-label="Close"
+                  class="absolute closeBtn top-4 right-4 w-8 h-8 rounded-full bg-chicago-white/10 hover:bg-chicago-red text-chicago-white flex items-center justify-center text-lg leading-none z-10 transition-colors"
+                >
+                  ×
+                </button>
+
+                <div class="p-8 sm:p-10">
+                  <p
+                    class="font-marquee text-chicago-gold text-xs tracking-[0.5em] uppercase text-center mb-2"
+                  >
+                    Insignias
+                  </p>
+                  <div class="rule mb-6"></div>
+
+                  <div
+                    class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start"
+                  >
+                    <div
+                      class="rounded-full overflow-hidden w-64 h-64 mx-auto sm:mx-0 ring-2 ring-chicago-gold shrink-0"
+                      style="background: #2d2d2d"
+                    >
+                      <img
+                        src="./assets/merch/letrac.png"
+                        alt="Chicago, close up"
+                        class="w-full h-full object-cover"
+                      />
+                    </div>
+
+                    <div>
+                      <h2 class="font-marquee title-outline text-3xl uppercase">
+                        Chicago
+                      </h2>
+                      <p
+                        class="font-playbill italic text-chicago-red-light text-sm mt-1"
+                      >
+                        Featured Player
+                      </p>
+
+                      <p
+                        class="text-sm text-chicago-white/70 mt-4 leading-relaxed"
+                      >
+                        Una insinia circular con tu personaje favorito del
+                        crimen del año
+                      </p>
+
+                      <ul class="mt-5 space-y-2.5 pb-5">
+                        <li
+                          class="flex items-center gap-3 text-sm text-chicago-white/80"
+                        >
+                          <span class="diamond"></span>Pegatinas 1€
+                        </li>
+                        <li
+                          class="flex items-center gap-3 text-sm text-chicago-white/80"
+                        >
+                          <span class="diamond"></span>Chapas 2€
+                        </li>
+                      </ul>
+                      <button class="btn-chicago py-5 botonContactos">
+                        <span class="btn-deco">✦</span>
+                        <span class="btn-text">Contáctanos</span>
+                        <span class="btn-deco">✦</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="rule mt-8"></div>
+                </div>
+              </div>
+            </dialog>
+          </section>
+        </div>
+
+        <!-- Panel contacto (oculto) -->
+        <div
+          class="tab-panel hidden animate-fade-in max-w-4xl mx-auto"
+          id="contacto"
+        >
+          <h2
+            class="font-show text-3xl font-bold text-white mb-2 relative chicago-line pb-4"
+          >
+            Contacto
+          </h2>
+          <p class="text-gray-400 mb-8 text-sm uppercase tracking-wider">
+            y otra información
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div
+              class="bg-gradient-to-br order-1 from-chicago-dark to-chicago-gray rounded-lg p-6 border border-gray-800 border-l-4 border-chicago-red"
+            >
+              <h3 class="font-show text-xl font-bold text-white mb-3">
+                🎭 Contacto
+              </h3>
+              <div class="space-y-2 text-gray-400">
+                <p>📧 chiclana@chiclana.com</p>
+                <p>📞 +34 666 45 29 74</p>
+                <p class="flex">
+                  <a href="https://www.instagram.com/clubteatrobbaa/">
+                    <img
+                      src="./assets/Instagram_icon.png"
+                      alt="Instagram"
+                      class="h-5 w-5 me-2"
+                    /> </a
+                  >@clubteatrobbaa
+                </p>
+              </div>
+            </div>
+            <div
+              class="bg-gradient-to-br order-3 md:order-2 from-chicago-dark to-chicago-gray rounded-lg p-6 border border-gray-800 border-l-4 border-chicago-red"
+            >
+              <h3 class="font-show text-xl mb-20 font-bold text-white mb-5">
+                🪑 Siguiente función
+              </h3>
+              <p class="text-gray-400">Noticias aquí y en instagram</p>
+              <button
+                class="px-6 py-3 mt-6 bg-gradient-to-r from-chicago-red to-chicago-red-dark text-white uppercase tracking-wider font-semibold rounded hover:shadow-lg transition-all"
+              >
+                Próximamente
+              </button>
+            </div>
+
+            <div
+              class="bg-gradient-to-br order-2 md:order-3 from-chicago-dark to-chicago-gray rounded-lg p-6 border border-gray-800 border-l-4 border-chicago-red"
+            >
+              <h3 class="font-show text-xl font-bold text-white mb-3">
+                🎪 Teatro
+              </h3>
+              <div class="grid grid-cols-2">
+                <div>
+                  <p class="text-gray-400 mb-4">Hogar Virgen de los Reyes</p>
+                  <p class="text-gray-400">
+                    C. Fray Isidoro de Sevilla, 1, 41009 Sevilla
+                  </p>
+                </div>
+                <div class="grid place-items-center">
+                  <img
+                    src="./assets/hogarVirgenReyes.jpg"
+                    class="w-32 h-24"
+                    alt="Hogar Virgen de los Reyes"
+                  />
+                </div>
+              </div>
+              <a href="https://maps.app.goo.gl/HDoUuboQmyzj2vvA9">
+                <button
+                  class="px-6 py-3 border border-gray-800 text-gray-400 grid grid-cols-9 place-items-center uppercase tracking-wider font-semibold rounded hover:border-chicago-red hover:text-chicago-red transition-all"
+                >
+                  <img
+                    src="./assets/map.png"
+                    class="w-4 h-4 col-span-1"
+                    alt="map icon by denimao"
+                  />
+                  <p class="col-span-8">Cómo llegar</p>
+                </button>
+              </a>
+            </div>
+            <div
+              class="bg-gradient-to-br order-4 from-chicago-dark to-chicago-gray rounded-lg p-6 border border-gray-800 border-l-4 border-chicago-gold"
+            >
+              <h3 class="font-show text-xl font-bold text-white mb-3">
+                👥 Crew Directory
+              </h3>
+              <p class="text-gray-400 mb-4">
+                Complete list of cast and crew members.
+              </p>
+              <button
+                class="px-6 py-3 bg-gradient-to-r from-chicago-red to-chicago-red-dark text-white uppercase tracking-wider font-semibold rounded hover:shadow-lg transition-all"
+              >
+                View Directory
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer
+        class="flex-shrink-0 bg-chicago-dark border-t border-chicago-red px-6 py-3 text-xs text-gray-500 flex justify-between items-center"
+      >
+        <span>El crimen del año - Tributo a Chicago</span>
+        <span class="flex items-center gap-4">
+          <span>Location Icon made by denimao from www.flaticon.com</span>
+          <span>Musical dirigido por Elisa Valdés</span>
+        </span>
+      </footer>
+    </div>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>

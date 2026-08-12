@@ -1,0 +1,77 @@
+/* ==========================================
+   CHICAGO DASHBOARD - ESTILOS COMPLEMENTARIOS
+   ========================================== */
+
+/* Fuentes (ya importadas en el HTML o aquí) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;600;700&display=swap');
+
+/* Scrollbar personalizado */
+.scrollbar-chicago::-webkit-scrollbar {
+  width: 6px;
+  height: 4px;
+}
+.scrollbar-chicago::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+.scrollbar-chicago::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #cc0000, #990000);
+  border-radius: 3px;
+}
+.scrollbar-chicago::-webkit-scrollbar-thumb:hover {
+  background: #ff1a1a;
+}
+
+/* Efecto spotlight */
+.spotlight-effect::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(204,0,0,0.1) 0%, transparent 70%);
+  animation: spotlight 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Línea decorativa */
+.chicago-line::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, #cc0000, #d4af37);
+}
+
+/* Borde inferior de 3px (no disponible por defecto en Tailwind) */
+.border-b-3 {
+  border-bottom-width: 3px;
+}
+
+/* Tarjetas con efecto hover rojo */
+.hover-red:hover {
+  background-color: rgba(204, 0, 0, 0.1);
+  border-color: #cc0000;
+}
+
+/* Clases de estado */
+.status-active {
+  background: rgba(0, 200, 0, 0.1);
+  color: #00c800;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.status-rehearsal {
+  background: rgba(212, 175, 55, 0.1);
+  color: #d4af37;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
