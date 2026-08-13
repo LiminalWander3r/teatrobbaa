@@ -890,6 +890,10 @@ dialog {
   margin-bottom: 0.25rem;
 }
 
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -1052,6 +1056,10 @@ dialog {
 
 .h-screen {
   height: 100vh;
+}
+
+.min-h-\[28px\] {
+  min-height: 28px;
 }
 
 .min-h-screen {
@@ -1758,6 +1766,10 @@ dialog {
 
 /* Estilos base personalizados */
 
+.empty\:bg-transparent:empty {
+  background-color: transparent;
+}
+
 .hover\:-translate-y-0\.5:hover {
   --tw-translate-y: -0.125rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1905,10 +1917,6 @@ dialog {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .md\:grid-cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
   .md\:flex-row {
     flex-direction: row;
   }
@@ -1929,6 +1937,10 @@ dialog {
     gap: 0px;
   }
 
+  .md\:gap-20 {
+    gap: 5rem;
+  }
+
   .md\:overflow-x-auto {
     overflow-x: auto;
   }
@@ -1941,5 +1953,11 @@ dialog {
   .md\:text-6xl {
     font-size: 3.75rem;
     line-height: 1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
